@@ -1,0 +1,126 @@
+.film-card{
+    position: relative;
+    display: block;
+    width: 250px;
+    height: 350px;
+    margin:15px auto; 
+    overflow: hidden;
+    border-radius: 10px;
+    transition: all 0.4s;
+    box-shadow: 0px 0px 100px -25px rgba(0,0,0, 0.5);
+    background-position: center;
+    background-size: cover;
+}
+.film-card:hover{
+    transform: scale(1.02);
+    box-shadow: 0px 0px 80px -25px rgba(0,0,0, 0.5);
+    transition: all 0.4s;
+}
+.info-section{
+    position: relative;
+    width: 100%;
+    height: 100%;
+	background-blend-mode: multiply;
+    z-index: 2;
+    border-radius: 10px;
+    /* background-color: rgba(0,0,0,.6); */
+    color: #fff;
+    background: linear-gradient(to bottom, rgba(0,0,0,.7) 30%,rgba(255, 255, 255, .7) 90%);
+
+}
+.card-header{
+    position: relative;
+    padding: 25px;
+    height: 50%;
+}
+.card-header h2{
+    font-weight: 400;
+    text-align: center;
+}
+.card-header p{
+    color: #FF4949;
+    font-weight: 400;
+    text-align: center;
+}
+.delete-movie{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.delete-button {
+    background-color: #0A66C2;
+    border: 0;
+    border-radius: 100px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 20px;
+    max-width: 480px;
+    min-height: 40px;
+    min-width: 0px;
+    overflow: hidden;
+    padding-top: 8px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+}
+
+.delete-button:hover,
+.delete-button:focus { 
+    background-color: #16437E;
+    color: #ffffff;
+}
+
+.delete-button:active {
+    background: #09223b;
+    color: rgb(255, 255, 255, .7);
+}
+
+.delete-button:disabled { 
+    cursor: not-allowed;
+    background: rgba(0, 0, 0, .08);
+    color: rgba(0, 0, 0, .3);
+}
+
+.evaluation-part{
+    padding-left: 15px;
+    padding-bottom: 5px; 
+    float: right;
+    margin-right: 20px;
+}
+.evaluation-part ul{
+    list-style: none;
+    padding: 0;
+    margin: 14px 1px 0 1px;
+}
+.unclicked-class{
+    display: inline-block;
+    color: rgba(0,0,0,0.5);
+    transition: color 0.3s;
+    transition-delay: 0.15s;
+    margin: 0 10px;
+}
+.evaluation-part ul li:hover{
+    transition: color 0.3s;
+    color: rgba(0,0,0,0.7);
+}
+.evaluation-part ul li i{
+    font-size: 20px;
+    cursor: pointer;
+}
+.dislike-number, .like-number {
+    display: inline-block;
+    margin: 0 5px;
+}
+.clicked-class {
+    /* color: rgba(0,0,0,0.7); */
+    color: #ca2525;
+    display: inline-block;
+    transition: color 0.3s;
+    transition-delay: 0.1s;
+    margin: 0 10px;
+}
