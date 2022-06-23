@@ -1,9 +1,3 @@
-/* .movies-list{
-    grid-area: list;
-}
-.filter-part{
-    grid-area: filter;
-} */
 .main{
     display: grid;
     grid-template-columns: 1fr 200px;
@@ -57,4 +51,5 @@ p.plus-info{
 }
 .result-msg span.result-num {
     font-weight: bold;
+    margin: 0 5px;
 }

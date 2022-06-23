@@ -1,19 +1,13 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import '../css/MovieCard.css';
 
 const MovieCard = ({movie, deleteMovie}) => {
-    const [like, setLike] = useState();
-    const [dislike, setDislike] = useState();
-    const [toggle, setToggle] = useState(Boolean);
-    useEffect(()=>{
-        setLike(movie.likes);
-        setDislike(movie.dislikes);
-        setToggle(0);
-    },[])
+    const [like, setLike] = useState(movie.likes);
+    const [dislike, setDislike] = useState(movie.dislikes);
+    //toggle like or dislike
+    const [toggle, setToggle] = useState(0);
 
-    const deleteClickHandler = ()=>{
-        deleteMovie(movie.id)
-    }
+    //handle the toggle like button
     const likeClick = () =>{
         if(toggle){
             setLike(like-1);
@@ -27,6 +21,7 @@ const MovieCard = ({movie, deleteMovie}) => {
             setDislike(dislike-1)
         }
     }
+    //handle the toggle dislike button
     const dislikeClick = () => {
         if(toggle){
             setDislike(dislike+1);
@@ -40,8 +35,10 @@ const MovieCard = ({movie, deleteMovie}) => {
             setToggle(0)
         }
     }
+
     return (
-        <div  className='film-card' style={{backgroundImage: `url(${movie.url})`}}>
+        <div  className='film-card'
+              style={{backgroundImage: `url(${movie.url})`}}>
             <div className='info-section'>
                 <div className='card-header'>
                     <h2>{movie.title}</h2>
@@ -50,17 +47,19 @@ const MovieCard = ({movie, deleteMovie}) => {
                 <div className='delete-movie'>
                     <button 
                         className='delete-button'
-                        onClick={deleteClickHandler}
+                        onClick={e=>deleteMovie(movie.id)}
                         >Delete</button>
                 </div>
                 <div className='evaluation-part'>
                     <ul>
-                        <li onClick={likeClick} className={toggle ? 'clicked-class': 'unclicked-class'}>
+                        <li onClick={likeClick} 
+                            className={toggle ? 'clicked-class': 'unclicked-class'}>
                             <i className="fas fa-thumbs-up">
                                 {like && <p className='like-number'>{like}</p>}
                             </i
                         ></li>
-                        <li onClick={dislikeClick} className={toggle===false ? 'clicked-class': 'unclicked-class'}>
+                        <li onClick={dislikeClick} 
+                            className={toggle===false ? 'clicked-class': 'unclicked-class'}>
                             <i className="fas fa-thumbs-down">
                                 {dislike && <p className='dislike-number'>{dislike}</p>}
                             </i>

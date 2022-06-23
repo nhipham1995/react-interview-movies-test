@@ -3,7 +3,7 @@ import {movies$} from '../data/movies';
 import {MovieCard, MovieFilter, Pagination} from '.';
 import '../css/MovieList.css';
 
-const FilmCard = () => {
+const MovieList = () => {
     const [movies, setMovies] = useState([]);
 
     //reset list movies after filter search
@@ -29,16 +29,19 @@ const FilmCard = () => {
         setMovies(movies.filter(movie=>movie.id !== id));
     }
     const filterMovie = (categories)=>{
-        const results = movies.filter(movie=> categories.indexOf(movie.category) !== -1);
+        const results = movies.filter(
+            movie=> categories.indexOf(movie.category) !== -1
+        );
         setMovies(results);
         setToggle(true);
+        setCurrentPage(1);
     }
     const resetFilter = ()=>{
         setReset(!reset);
-        setToggle(false)
+        setToggle(false);
+        setCurrentPage(1);
     }
     const clickedPage = (pageNum)=>{
-        console.log(pageNum);
         if(pageNum<1 || pageNum > Math.ceil(movies.length/moviesPerPage)){
             console.error('out of page')
             return;
@@ -47,7 +50,6 @@ const FilmCard = () => {
     }
 
     const inputChangeHandle = (e)=>{
-        console.log(e.target.value);
         const result = e.target.value;
         if(result > 3 && result <11 ){
             setMoviesPerPage(e.target.value);
@@ -79,21 +81,28 @@ const FilmCard = () => {
         </div>
         <div className='main'>
             <div className='movies-list'>
-                {currentMovies.map(movie=><MovieCard 
-                                            movie={movie} 
-                                            deleteMovie={deleteMovie} 
-                                            key={movie.id} />)}
+                {currentMovies.map(movie=>(
+                    <MovieCard 
+                        movie={movie} 
+                        deleteMovie={deleteMovie} 
+                        key={movie.id} 
+                    />))}
             </div>
             <div className='filter-part'>
               <MovieFilter movies={movies} 
                            filterMovie={filterMovie} 
                            resetFilter={resetFilter} />
-              {toggle && <div className='result-msg'>There are <span className='result-num'>{movies.length}</span>  results</div>}
+              {toggle && <div className='result-msg'>
+                  There are 
+                  <span className='result-num'>
+                      {movies.length}
+                  </span>  
+                  results
+                </div>}
             </div>
-        </div>
-       
+        </div>     
     </div>
   )
 }
 
-export default FilmCard
+export default MovieList
